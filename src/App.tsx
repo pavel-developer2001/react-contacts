@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import CardList from "./components/CardList";
+import FiltersComponent from "./components/FiltersComponent";
+import Header from "./components/Header";
+import PaginationComponent from "./components/PaginationComponent";
+import TableList from "./components/TableList";
+import { StateTable } from "./constans";
+import { useAppDispatch, useAppSelector } from "./store";
+import { selectFilters } from "./store/modules/contact/contact.selector";
+import { getContacts } from "./store/modules/contact/contact.slice";
+import { selectView } from "./store/modules/view/view.slice";
 
 function App() {
+  const view = useAppSelector(selectView);
+  const filters = useAppSelector(selectFilters);
+  const dispatch = useAppDispatch();
+  const payload = { limit: filters.limit, page: filters.page };
+  useEffect(() => {
+    dispatch(getContacts(payload));
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Header />
+      <FiltersComponent />
+      {view === StateTable.TABLE ? <TableList /> : <CardList />}
+      <PaginationComponent />
     </div>
   );
 }

@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  margin: 15px 15px;
+  align-items: center;
+  justify-content: space-between;
+  .title {
+    font-size: 22px;
+    font-weight: 500;
+  }
+}

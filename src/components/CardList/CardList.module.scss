@@ -1,0 +1,19 @@
+.wrapper {
+  margin: 20px 15px;
+}
+.wrapper_item {
+  padding: 15px;
+  .header {
+    display: flex;
+    margin-bottom: 15px;
+    .data {
+      margin-left: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+    .national {
+      margin-left: 14vw;
+      margin-top: 1px;
+    }
+  }
+}
