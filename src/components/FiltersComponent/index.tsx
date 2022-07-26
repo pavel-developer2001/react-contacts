@@ -12,7 +12,7 @@ import {
   SelectChangeEvent,
   TextField,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { selectFilters } from "../../store/modules/contact/contact.selector";
